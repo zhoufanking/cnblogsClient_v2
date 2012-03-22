@@ -2,6 +2,8 @@ package org.CnBlogsClient.Common;
 
 import java.util.Vector;
 
+import org.CnBlogsClient.Resource.Res;
+
 public class ItemInfo {
 
 	public ItemInfo() {
@@ -9,8 +11,12 @@ public class ItemInfo {
 		ItemName = null;
 		ItemSummery = null;
 		PostTime = null;
-		Content = null;
+		ItemLink = null;
+		Content = Res.getNullContentMsg();		
+		LocalPath = Res.getNullContentMsg();
+		
 		Tags = new Vector<String>();
+//		PicLinks = new Vector<String>();
 	}
 	
 	public String getItemName() {
@@ -50,6 +56,23 @@ public class ItemInfo {
 	public void setItemLink(String itemLink) {
 		ItemLink = itemLink;
 	}
+
+	public String getLocalPath() {
+		return LocalPath;
+	}
+
+	public void setLocalPath(String localPath) {
+		LocalPath = localPath;
+	}
+//	
+//	public Vector<String> getPicLinks() {
+//		return PicLinks;
+//	}
+//
+//	public void setPicLinks(Vector<String> picLinks) {
+//		PicLinks = picLinks;
+//	}
+//	
 	
 	public String toString(){
 		String str = ItemName + "\n"
@@ -64,12 +87,10 @@ public class ItemInfo {
 	private	String			PostTime;
 	private	String			Content;
 	private String 			ItemLink;
-	
-
+	private String			LocalPath;
 
 	private	Vector<String>	Tags;
-	
-	
+//	private Vector<String>  PicLinks;
 	
 	
 }

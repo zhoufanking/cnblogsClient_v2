@@ -1,5 +1,6 @@
 package org.CnBlogsClient.Fetch;
 
+
 import java.io.IOException;
 import java.util.Vector;
 
@@ -70,6 +71,7 @@ public class FetchCnBlogs implements Fetch {
 		return ItemData;
 	}
 
+	
 	private boolean Connect(String Address) {
 	
 		for(int Retry = 0 ; (doc == null)&&(Retry < Res.getRetrytimes()); Retry++){
@@ -88,6 +90,31 @@ public class FetchCnBlogs implements Fetch {
 		else
 			return true;
 	}
+
+	/**
+	 * get post body and fetch the image links
+	 */
+	@Override
+	public void getContent(ItemInfo item) {
+		Document  adoc= null;
+		for (int j = 0; adoc == null&&j < Res.getRetrytimes(); j++) {
+				System.out.println("Startting fetching contets of"+ item.getItemName());
+				try {
+					adoc = Jsoup.connect(item.getItemLink())
+							.userAgent("Mozilla").timeout(Res.geTimeOut()).get();
+				} catch (IOException e) {
+					
+					System.out.println(Res.getConRetryMsg());
+				}
+			}
+			if(adoc == null){
+				System.out.println("fetch tips error, adoc is null");
+				item.setContent(Res.getFileNotExistMsg());
+			}
+			else{
+				item.setContent(adoc.getElementsByClass("post").html());
+			}
+		}	
 
 	private void parser(){
 		getItemName();
@@ -144,7 +171,36 @@ public class FetchCnBlogs implements Fetch {
 			ItemLink.add(item.absUrl("href"));
 			}
 		}
-	}
+
+//	
+//	private Vector<String> getPicsLinks(Document  ContentDoc) {
+//		Elements Imgs = ContentDoc.select("[src]");
+//		
+//		String imgLink = null;
+//		
+//		Vector<String> imgs = new Vector<String>();
+//		
+//		 for (Element src : Imgs) {
+//			 
+//			 if(src.tagName().equals("img")){
+//				 //obtain the image link
+//				 imgLink = src.attr("abs:src");
+//				 if(!imgLink.contains("?")&&!imgLink.equals(null))
+//					 //fetch the image and store it in a local dir
+//					 //imgPath = makeImg(imgLink,Res.getImgDir()+File.separator);
+//					 imgs.add(imgLink);					 
+//				 else
+//					 imgs.add(Res.getNullContentMsg());	
+//				 //replace the image link in the post body from a web link to a local link
+//				//src.attr("src", imgPath);
+//		}
+//	}
+//		return imgs;
+//	}
+//	
+	
+	
+}
 
 
 

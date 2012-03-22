@@ -8,4 +8,6 @@ public interface Fetch {
 	public int getItemNum();
 	public LinkList<ItemInfo> getItems(int ItemNums);//Number of Items fetch form the web 
 	//public boolean Connect(String Address);
+	
+	public void getContent(ItemInfo item);
 }

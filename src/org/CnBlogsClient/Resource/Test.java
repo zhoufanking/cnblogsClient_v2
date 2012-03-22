@@ -30,7 +30,7 @@ public class Test {
 		fpPics.mkdir();
 		Log.print("ResTest", Res.getImgDir()+"is created");
 		
-		File fpcfg = new File(Res.getCfgFilePath());
+		File fpcfg = new File(Res.getContentsDir() + File.separator+ "Asp.net MVC 基于规则的权限设计(续)-- 扩展微软企业库安全模块" + ".html");
 		
 		PrintWriter out = null;
 		try {

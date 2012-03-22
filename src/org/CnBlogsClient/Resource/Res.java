@@ -20,6 +20,7 @@ public class Res {
 	private  final static String  MSG_CONNECTION_RETRY = "重建连接...";
 	private  final static String  MSG_CONNECTION_FAILURE = "网络不给力哦，请稍候再试...";
 	private  final static String  MSG_FILE_NOT_EXIST ="NOCONTENT";
+	private  final static String  MSG_NULL_CONTENT  ="NULL_CONTENT";
 
 	
 		
@@ -64,7 +65,11 @@ public class Res {
 	public static String getFileNotExistMsg() {
 		return MSG_FILE_NOT_EXIST;
 	}
-
+	
+	public static String getNullContentMsg(){
+		return MSG_NULL_CONTENT;
+		
+	}
 
 	private static String buildPath(String name){
 		String HomeDir = getUserHome();

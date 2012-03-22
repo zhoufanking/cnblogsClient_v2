@@ -7,7 +7,7 @@ public class Log {
 		LogState = state;
 	}
 	public static void print(String FuncName,String Text){
-		if(LogState)
+		//if(LogState)
 			System.out.println(FuncName+" "+Text);
 	}
 	
