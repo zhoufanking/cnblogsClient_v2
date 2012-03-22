@@ -1,4 +1,4 @@
-package org.CnBlogsClient;
+package org.CnBlogsClient.Storage;
 
 import org.CnBlogsClient.Common.ItemInfo;
 import org.CnBlogsClient.Common.LinkList;
