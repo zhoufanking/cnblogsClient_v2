@@ -36,7 +36,7 @@ public class StoreCnBlogs implements Storage {
 	}
 
 	@Override
-	public void init(String CfgFilePath, String ContentPath, String ImgFilePath) {
+	public void init() {
 
 		File fpRoot = new File(Res.getRootdir());
 		if (!fpRoot.mkdir()) {

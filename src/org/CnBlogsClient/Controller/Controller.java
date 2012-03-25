@@ -17,6 +17,7 @@ public class Controller {
 	public Controller(){
 		Fetcher = FetchFactory.newInstance();
 		st = StorageFactory.newInstance();
+		st.init();
 		Items = null;
 	}
 	
